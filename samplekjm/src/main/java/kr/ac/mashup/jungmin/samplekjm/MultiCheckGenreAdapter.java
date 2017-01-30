@@ -50,7 +50,7 @@ public class MultiCheckGenreAdapter extends
   @Override
   public void onBindGroupViewHolder(GenreViewHolder holder, int flatPosition,
       ExpandableGroup group) {
-    holder.bind(group);
+    holder.bind(group, flatPosition);
     Log.v(TAG, "======parent adapter======");
   }
 }

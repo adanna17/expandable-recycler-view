@@ -13,21 +13,21 @@ import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
  * a collapse / expand. *Only* click events on the parent {@link View} will trigger a collapse or
  * expand
  */
-public abstract class GroupViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
+public abstract class GroupViewHolder extends RecyclerView.ViewHolder {
 
-  private OnGroupClickListener listener;
+  public OnGroupClickListener listener;
 
   public GroupViewHolder(View itemView) {
     super(itemView);
-    itemView.setOnClickListener(this);
+    //itemView.setOnClickListener(this);
   }
-
-  @Override
-  public void onClick(View v) {
-    if (listener != null) {
-      listener.onGroupClick(getAdapterPosition());
-    }
-  }
+//
+//  @Override
+//  public void onClick(View v) {
+//    if (listener != null) {
+//      listener.onGroupClick(getAdapterPosition());
+//    }
+//  }
 
   public void setOnGroupClickListener(OnGroupClickListener listener) {
     this.listener = listener;

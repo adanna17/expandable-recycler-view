@@ -32,7 +32,7 @@ public abstract class MultiTypeExpandableRecyclerViewAdapter<GVH extends GroupVi
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     if (isGroup(viewType)) {
       GVH gvh = onCreateGroupViewHolder(parent, viewType);
-      gvh.setOnGroupClickListener(this);
+      //gvh.setOnGroupClickListener(this);
       return gvh;
     } else if (isChild(viewType)) {
       CVH cvh = onCreateChildViewHolder(parent, viewType);

@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.daimajia.swipe.SwipeLayout;
-import com.thoughtbot.expandablecheckrecyclerview.models.CheckedExpandableGroup;
+import com.thoughtbot.expandablerecyclerview.listeners.OnGroupClickListener;
 import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
 import com.thoughtbot.expandablerecyclerview.viewholders.GroupViewHolder;
 
@@ -48,7 +48,7 @@ public class GenreViewHolder extends GroupViewHolder {
     ButterKnife.bind(this, itemView);
   }
 
-  public void bind(ExpandableGroup parentData){
+  public void bind(ExpandableGroup parentData, final int parentPosition){
 
     Log.v(TAG, "======parent view holder======");
 
@@ -71,6 +71,46 @@ public class GenreViewHolder extends GroupViewHolder {
     }
     String countReceiveDebtors = countChecked + "명/" + numOfTotalChild + "명";
     tvDeboterCount.setText(countReceiveDebtors);
+
+    swipeLayout.addSwipeListener(new SwipeLayout.SwipeListener() {
+      @Override
+      public void onStartOpen(SwipeLayout layout) {
+        collapse();
+      }
+
+      @Override
+      public void onOpen(SwipeLayout layout) {
+
+      }
+
+      @Override
+      public void onStartClose(SwipeLayout layout) {
+
+      }
+
+      @Override
+      public void onClose(SwipeLayout layout) {
+
+      }
+
+      @Override
+      public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
+
+      }
+
+      @Override
+      public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
+
+      }
+    });
+
+    swipeLayout.getSurfaceView().setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Log.v(TAG, "========swipe surface 클릭=========");
+        listener.onGroupClick(parentPosition);
+      }
+    });
   }
 
   @Override
